@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AddTransaction from "./pages/AddTransaction";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
 	return (
@@ -50,6 +51,8 @@ function App() {
 					</ProtectedRoute>
 				}
 			/>
+
+			<Route path="*" element={<ErrorPage/>}/>
 		</Routes>
 	);
 }
