@@ -32,7 +32,7 @@ const Navbar = () => {
 				className="font-bold text-3xl text-blue-600 "
 				to={"/dashboard"}
 			>
-				Fin<span className="text-gray-600">Track</span>
+				Fins<span className="text-gray-600">Track</span>
 			</Link>
 
 			<div className="flex gap-4 items-center">
