@@ -5,6 +5,8 @@ import { getUserProfile } from "../services/userService";
 const Navbar = () => {
 	const navigate = useNavigate();
 	const [user, setUser] = useState({});
+	const token = localStorage.getItem("token");
+	console.log(token)
 
 	const handleLogout = () => {
 		localStorage.removeItem("token");
@@ -24,8 +26,6 @@ const Navbar = () => {
 		fetchUserDetailsForDp();
 	}, []);
 
-	console.log(user);
-
 	return (
 		<nav className="bg-white shadow px-6 py-4 flex justify-between items-center">
 			<Link
@@ -36,8 +36,9 @@ const Navbar = () => {
 			</Link>
 
 			<div className="flex gap-4 items-center">
-				<div
-					className="px-3
+				{token && (
+					<div
+						className="px-3
 						py-0.5
 						bg-cyan-100
 
@@ -48,20 +49,35 @@ const Navbar = () => {
 						hover:bg-cyan-200
 						transition
 						font-medium rounded-full"
-					onClick={() => navigate("/profile")}
-				>
-					<p className="font-bold text-2xl">
-						<span>{user?.name?.split("")[0].toUpperCase()}</span>
-					</p>
-				</div>
-				<button
-					onClick={handleLogout}
-					className="px-5 py-2 rounded-lg
+						onClick={() => navigate("/profile")}
+					>
+						<p className="font-bold text-2xl">
+							<span>
+								{user?.name?.split("")[0].toUpperCase()}
+							</span>
+						</p>
+					</div>
+				)}
+
+				{token ? (
+					<button
+						onClick={handleLogout}
+						className="px-5 py-2 rounded-lg
                                 bg-red-100 text-red-700 border border-red-600
                                 hover:bg-red-200 transition font-medium"
-				>
-					Logout
-				</button>
+					>
+						Logout
+					</button>
+				) : (
+					<Link
+						to={"/login"}
+						className="px-5 py-2 rounded-lg
+                                bg-blue-200 text-blue-700 border border-blue-600
+                                hover:bg-red-200 transition font-medium"
+					>
+						Login
+					</Link>
+				)}
 			</div>
 		</nav>
 	);
