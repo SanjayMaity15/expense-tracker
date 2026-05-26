@@ -11,19 +11,17 @@ import ErrorPage from "./pages/ErrorPage";
 function App() {
 	return (
 		<Routes>
-			<Route path="/" element={<Navigate to="/login" />} />
-
-			<Route path="/login" element={<Login />} />
-			<Route path="/register" element={<Register />} />
-
 			<Route
-				path="/dashboard"
+				path="/"
 				element={
 					<ProtectedRoute>
 						<Dashboard />
 					</ProtectedRoute>
 				}
 			/>
+
+			<Route path="/login" element={<Login />} />
+			<Route path="/register" element={<Register />} />
 
 			<Route
 				path="/add-transaction"
@@ -52,7 +50,7 @@ function App() {
 				}
 			/>
 
-			<Route path="*" element={<ErrorPage/>}/>
+			<Route path="*" element={<ErrorPage />} />
 		</Routes>
 	);
 }
