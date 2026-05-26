@@ -6,8 +6,6 @@ import connectDB from "./config/db.js";
 
 dotenv.config();
 
-console.log(process.env.MONGO_URI);
-
 connectDB();
 
 const app = express();
