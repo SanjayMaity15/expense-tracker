@@ -34,7 +34,7 @@ const AddTransaction = () => {
 		try {
 			await addTransaction(formData);
 			toast.success("Transaction added successfully");
-			navigate("/dashboard");
+			navigate("/");
 		} catch (error) {
 			toast.error("Failed to add transaction");
 		}
