@@ -5,9 +5,12 @@ import { toast } from "react-toastify";
 
 const TransactionList = ({ setSummary }) => {
 	const [transactions, setTransactions] = useState([]);
+	const token = localStorage.getItem("token");
 
 	useEffect(() => {
-		fetchTransactions();
+		if (token) {
+			fetchTransactions();
+		}
 	}, []);
 
 	const fetchTransactions = async () => {

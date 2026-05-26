@@ -10,6 +10,8 @@ const Register = () => {
 		password: "",
 	});
 
+	const [loading, setLoading] = useState(false);
+
 	const navigate = useNavigate();
 
 	const handleChange = (e) => {
@@ -33,21 +35,24 @@ const Register = () => {
 		}
 
 		try {
+			setLoading(true)
 			await registerUser(formData);
 			toast.success("Registration successful. Please login.");
+			setLoading(false)
 			navigate("/login");
 		} catch (error) {
+			setLoading(false)
 			toast.error(error.response?.data?.message || "Registration failed");
 		}
 	};
 
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-gray-100">
+		<div className="min-h-screen flex items-center justify-center bg-linear-to-br from-green-50 via-white to-blue-50">
 			<form
 				onSubmit={handleSubmit}
-				className="bg-white p-6 rounded-lg shadow-md w-96"
+				className="bg-white/80 backdrop-blur-md border border-gray-200 p-8 rounded-2xl shadow-2xl w-96"
 			>
-				<h2 className="text-2xl font-bold mb-4 text-center">
+				<h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
 					Register
 				</h2>
 
@@ -55,7 +60,7 @@ const Register = () => {
 					type="text"
 					name="name"
 					placeholder="Full Name"
-					className="w-full p-2 mb-3 border rounded"
+					className="w-full p-3 mb-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition"
 					onChange={handleChange}
 				/>
 
@@ -63,7 +68,7 @@ const Register = () => {
 					type="email"
 					name="email"
 					placeholder="Email"
-					className="w-full p-2 mb-3 border rounded"
+					className="w-full p-3 mb-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition"
 					onChange={handleChange}
 				/>
 
@@ -71,22 +76,23 @@ const Register = () => {
 					type="password"
 					name="password"
 					placeholder="Password"
-					className="w-full p-2 mb-4 border rounded"
+					className="w-full p-3 mb-5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition"
 					onChange={handleChange}
 				/>
 
 				<button
 					type="submit"
-					className="w-full px-5 py-2 rounded-lg
-                                bg-green-100 text-green-700 border border-green-600
-                                hover:bg-green-200 transition font-medium"
+					className="w-full px-5 py-3 rounded-lg bg-linear-to-r from-green-400 to-green-600 text-white font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
 				>
-					Register
+					{loading ? "Please wait..." : "Register"}
 				</button>
 
-				<p className="text-center mt-3 text-sm">
+				<p className="text-center mt-4 text-sm text-gray-600">
 					Already have an account?{" "}
-					<Link to="/login" className="text-blue-600">
+					<Link
+						to="/login"
+						className="text-green-600 font-medium hover:underline"
+					>
 						Login
 					</Link>
 				</p>
