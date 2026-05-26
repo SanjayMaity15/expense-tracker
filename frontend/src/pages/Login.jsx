@@ -74,7 +74,7 @@ const Login = () => {
 					type="submit"
 					className="w-full px-5 py-3 rounded-lg bg-linear-to-r from-green-400 to-green-600 text-white font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
 				>
-					Login
+					{loading ? "Please wait..." : "Login"}
 				</button>
 
 				<p className="text-center mt-4 text-sm text-gray-600">
@@ -82,11 +82,7 @@ const Login = () => {
 					<Link
 						to="/register"
 						className="text-green-600 font-medium hover:underline"
-					>
-						{
-							loading ? "Please wait..." : "Login"
-						}
-					</Link>
+					>Register</Link>
 				</p>
 			</form>
 		</div>
