@@ -83,4 +83,3 @@ npm start
 
 Helps individuals track daily income and expenses and maintain financial clarity.
 
-Thank you
