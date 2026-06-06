@@ -80,6 +80,7 @@ npm start
 ---
 
 ## 📌 Use Case
+Helps individuals track daily income and expenses and maintain financial clarity.
 
 
 
