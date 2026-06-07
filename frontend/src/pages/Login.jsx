@@ -51,7 +51,7 @@ const Login = () => {
 				className="bg-white/80 backdrop-blur-md border border-gray-200 p-8 rounded-2xl shadow-2xl w-96"
 			>
 				<h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
-					Login
+					Login Page
 				</h2>
 
 				<input
